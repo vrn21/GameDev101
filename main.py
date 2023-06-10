@@ -13,6 +13,7 @@ displayicon = pygame.display.set_icon(icon)
 playimg = pygame.image.load("space-invaders.png")
 playerx = 370
 playery = 480
+playerx_change = 0
 
 
 def player(x, y):
@@ -24,20 +25,20 @@ running = True
 while running:
     screen.fill((0, 0, 0))
 
-    player(playerx, playery)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
     #keystroke is pressed
         if event.type == pygame.KEYDOWN:
-            if event.type == pygame.K_LEFT:
-                print("L")
-            if event.type == pygame.K_RIGHT:
-                print("R")
+
+            if event.key == pygame.K_LEFT:
+                playerx_change = -0.1
+            if event.key == pygame.K_RIGHT:
+                playerx_change = 0.1
         #Release the keystroke
         if event.type == pygame.KEYUP:
-            if event.type.K_LEFT or event.type.K_RIGHT:
-                print("Released")
-
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                playerx_change = 0
+    playerx += playerx_change
+    player(playerx, playery)
     pygame.display.update()
