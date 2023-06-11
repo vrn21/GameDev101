@@ -33,19 +33,14 @@ bulletx_change = 0
 bullety_change = 40
 bullet_state = "ready"
 
-
 def player(x, y):
     screen.blit(playimg, (x, y))
-
 
 def enemy(x, y):
     screen.blit(enemyicon, (x, y))
 
-
 def fire_bullet(x, y):
-
     screen.blit(bulleticon, (x + 16, y + 10))
-
 
 #game loop
 running = True
